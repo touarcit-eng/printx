@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="PrintX — impressions personnalisées.">
+  <title>PrintX | Impressions personnalisées</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top"><a class="brand" href="#accueil">Print<span>X</span></a><nav><a href="#produits">Produits</a><a href="#commande">Commander</a><button class="cart-button" id="openCart" type="button" aria-label="Ouvrir le panier">Panier <b id="cartCount">0</b></button></nav></header>
+  <main id="accueil">
+    <section class="hero"><p class="eyebrow">IMPRIMÉ À VOTRE IMAGE</p><h1>Vos idées, prêtes à offrir.</h1><p>Choisissez un support, ajoutez vos détails, puis envoyez une demande de commande claire à PrintX.</p><a class="primary" href="#produits">Voir les produits</a></section>
+    <section id="produits" class="section"><div class="section-title"><p class="eyebrow">CATALOGUE</p><h2>Choisissez votre impression</h2></div><div class="products" id="productGrid"></div></section>
+    <section id="commande" class="section order"><div><p class="eyebrow">COMMANDE</p><h2>Finaliser la demande</h2><p>Le panier est conservé sur cet appareil. Aucune commande n’est envoyée sans votre confirmation dans WhatsApp.</p></div>
+      <form id="checkoutForm" novalidate>
+        <label>Nom complet<input name="name" autocomplete="name" required maxlength="80"></label>
+        <label>Téléphone<input name="phone" type="tel" autocomplete="tel" required maxlength="30" placeholder="Ex. 0550 00 00 00"></label>
+        <label>Adresse / lieu de retrait<textarea name="address" required maxlength="240"></textarea></label>
+        <label>Note pour la commande <span>(facultatif)</span><textarea name="note" maxlength="500" placeholder="Couleur, texte à imprimer, délai souhaité…"></textarea></label>
+        <p class="total-line">Total estimé <strong id="checkoutTotal">0 DA</strong></p>
+        <p class="form-message" id="formMessage" role="alert"></p>
+        <button class="primary" type="submit">Préparer la commande WhatsApp</button>
+      </form>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> PrintX · Les prix sont des estimations à confirmer avant production.</footer>
+  <aside class="cart" id="cart" aria-label="Votre panier" aria-hidden="true"><div class="cart-head"><h2>Votre panier</h2><button id="closeCart" type="button" aria-label="Fermer">×</button></div><div id="cartItems"></div><div class="cart-foot"><p>Total estimé <strong id="cartTotal">0 DA</strong></p><a href="#commande" id="goCheckout" class="primary">Passer à la commande</a></div></aside><div class="scrim" id="scrim"></div>
+  <script src="app.js"></script>
+</body></html>
