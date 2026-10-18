@@ -12,6 +12,118 @@
 .product.unavailable{opacity:.78}.product.unavailable .product-visual:after{border-color:#a7afbb}.unavailable-badge{background:#eef0f3;color:#596273}.product .btn:disabled{background:#e7e9ed;color:#667085;cursor:not-allowed;transform:none}
 .order-progress{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 22px}.progress-step{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;color:var(--muted);font-size:12px;font-weight:700}.progress-step b{width:26px;height:26px;flex:0 0 26px;display:grid;place-items:center;border-radius:50%;background:#f1f3f6;color:var(--navy)}.progress-step.active{border-color:#f6b58e;background:#fff9f5;color:var(--ink)}.progress-step.active b{background:var(--orange);color:#fff}.status-note{font-size:12px;color:var(--muted);line-height:1.55;margin:10px 0 0}.cart-item{align-items:flex-start}.cart-item>div{min-width:0;overflow-wrap:anywhere}.cart-item .remove{flex:0 0 auto;padding:5px}.cart-count{font-variant-numeric:tabular-nums}.cart-shortcut{position:relative}.cart-shortcut .cart-count{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:99px;background:#fff;color:var(--navy);font-size:11px;margin-left:4px}.qty-controls{display:flex;align-items:center;gap:9px;margin-top:8px}.qty-controls button{width:30px;height:30px;border:1px solid #d7dde6;background:#fff;border-radius:8px;font-weight:900;color:var(--navy)}.qty-controls button:disabled{opacity:.35;cursor:not-allowed}.cart-shortcut:focus-visible{outline:3px solid #ffb184;outline-offset:3px}.order-feedback{border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.5;margin-top:12px;background:#f5f7fa;border:1px solid var(--line);color:var(--ink)}.order-feedback.error{background:#fff3f1;border-color:#f4c4bd;color:#9d3027}.order-feedback.success{background:#effaf4;border-color:#bce7ce;color:#17653d}
 @media(max-width:600px){.brand{font-size:25px}.order-progress{gap:6px}.progress-step{padding:8px 6px;gap:6px;font-size:10px;align-items:flex-start}.progress-step b{width:22px;height:22px;flex-basis:22px}}
+
+/* PRINTX LASER PERIMETER POLISH 2026-10-18
+   proportions plus équilibrées et trace orange douce autour des cadres */
+.wrap{width:min(1120px,calc(100% - 40px))}
+.navin{min-height:70px;gap:20px}
+.hero-grid{gap:clamp(28px,4vw,42px);padding:clamp(48px,6vw,66px) 0}
+.hero h1{font-size:clamp(36px,4.5vw,56px);letter-spacing:-1.9px;line-height:1.04}
+.hero-art{min-height:300px}
+.paper{height:232px}
+.paper.back{height:222px;top:27px}
+.section{padding:clamp(46px,5.2vw,59px) 0}
+.section-head{margin-bottom:24px}
+.categories{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.cat{min-height:132px;padding:17px}
+.cat-icon{width:42px;height:42px;margin-bottom:12px}
+.product-grid{gap:16px}
+.product-visual{height:166px}
+.product-info{padding:17px;gap:9px}
+.steps{gap:15px}
+.step{padding:21px}
+.panel{padding:22px}
+.order-layout{gap:20px}
+@media(max-width:850px){
+  .wrap{width:calc(100% - 36px)}
+  .hero-grid{padding:48px 0}
+  .hero-art{min-height:275px}
+  .categories{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .section{padding:46px 0}
+}
+@media(max-width:520px){
+  .wrap{width:calc(100% - 28px)}
+  .navin{min-height:62px;gap:10px}
+  .hero-grid{padding:38px 0 42px;gap:18px}
+  .hero h1{font-size:clamp(34px,9vw,41px);letter-spacing:-1.2px}
+  .hero-ctas{margin:20px 0;gap:9px}
+  .hero-art{min-height:232px}
+  .paper{height:184px;padding:18px}
+  .paper.back{height:176px;top:26px}
+  .paper .mockbox{height:44px;margin-top:14px}
+  .section{padding:39px 0}
+  .categories{gap:9px}
+  .cat{min-height:116px;padding:13px}
+  .cat strong{font-size:12px}
+  .product-grid{gap:9px}
+  .product-visual{height:126px}
+  .product-info{padding:11px;gap:8px}
+  .panel{padding:16px}
+}
+/* The moving light is a masked ring: only a thin edge is visible, never a large beam. */
+@property --printx-laser-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes printXLaserPerimeter{to{--printx-laser-angle:360deg}}
+:is(.cat,.product,.step,.panel,.progress-step,.paper,.floating,.notice,.cart-empty,.admin-order,.order-feedback){
+  position:relative;
+  isolation:isolate;
+}
+:is(.cat,.product,.step,.panel,.progress-step,.paper,.floating,.notice,.cart-empty,.admin-order,.order-feedback)::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1.6px;
+  pointer-events:none;
+  z-index:4;
+  opacity:.56;
+  background:conic-gradient(from var(--printx-laser-angle),transparent 0deg,transparent 238deg,rgba(244,123,53,.16) 258deg,#f47b35 286deg,#fff8f0 301deg,#f47b35 316deg,transparent 338deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  filter:drop-shadow(0 0 2px rgba(244,123,53,.25));
+  animation:printXLaserPerimeter 7.8s linear infinite;
+}
+:is(.cat,.product,.step,.panel,.progress-step,.paper,.floating,.notice,.cart-empty,.admin-order,.order-feedback):hover::before{opacity:.92}
+.cat:nth-child(2)::before,.step:nth-child(2)::before,.product:nth-child(3n + 2)::before{animation-delay:-1.8s}
+.cat:nth-child(3)::before,.step:nth-child(3)::before,.product:nth-child(3n)::before{animation-delay:-3.7s}
+.cat:nth-child(4)::before,.progress-step:nth-child(2)::before{animation-delay:-2.5s}
+.cat:nth-child(5)::before,.progress-step:nth-child(3)::before{animation-delay:-5.1s}
+.cat:nth-child(6)::before{animation-delay:-6.4s}
+/* Cadres illustrés des produits : la lumière suit le pourtour du rectangle. */
+.product-visual::after{
+  border:0;
+  padding:1.7px;
+  background:conic-gradient(from var(--printx-laser-angle),transparent 0deg,transparent 235deg,rgba(244,123,53,.2) 260deg,#f47b35 287deg,#fff7ed 302deg,#f47b35 317deg,transparent 340deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  animation:printXLaserPerimeter 6.4s linear infinite;
+  opacity:.9;
+}
+.product:nth-child(3n + 2) .product-visual::after{animation-delay:-2.1s}
+.product:nth-child(3n) .product-visual::after{animation-delay:-4.1s}
+/* Laser du logo plus léger : un reflet bref sur le X, pas un gros faisceau. */
+.brand-x:before{
+  height:1.5px;
+  background:linear-gradient(90deg,transparent,#ff8b45 25%,#fff8f0 50%,#ff8b45 75%,transparent);
+  box-shadow:0 0 3px rgba(255,123,53,.8),0 0 7px rgba(255,123,53,.35);
+  animation:printXLaser 3.4s ease-in-out infinite;
+}
+@keyframes printXLaser{
+  0%,15%{opacity:0;transform:translate(-5px,-2px) rotate(-48deg)}
+  28%,40%{opacity:.8;transform:translate(0,0) rotate(-48deg)}
+  56%{opacity:.15;transform:translate(4px,2px) rotate(-48deg)}
+  68%,100%{opacity:0;transform:translate(6px,3px) rotate(-48deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  :is(.cat,.product,.step,.panel,.progress-step,.paper,.floating,.notice,.cart-empty,.admin-order,.order-feedback)::before,
+  .product-visual::after,.brand-x::before{animation:none!important}
+  :is(.cat,.product,.step,.panel,.progress-step,.paper,.floating,.notice,.cart-empty,.admin-order,.order-feedback)::before{opacity:.23}
+  .product-visual::after{opacity:.45}
+}
+
 </style></head>
 <body><div class="topline"></div><header class="nav"><div class="wrap navin"><a class="brand" href="#home"><span class="brandword">Print<span class="brand-x">X</span></span></a><nav class="navlinks"><a href="#catalog" data-i="navProducts">Produits</a><a href="#how" data-i="navHow">Comment ça marche</a><a href="#order" data-i="navOrder">Commander</a></nav><div class="actions"><a class="btn btn-light btn-small cart-shortcut" href="#order" aria-label="Voir le panier">Panier <span id="headerCartCount" class="cart-count">0</span></a><button class="lang" id="langBtn" aria-label="Change language">عربي</button><a class="btn btn-primary btn-small" href="#catalog" data-i="navShop">Boutique ↗</a></div></div></header>
 <main id="home"><section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow" data-i="eyebrow">Impression professionnelle sur mesure</div><h1 data-i="heroTitle">Votre image.<br>Votre signature.</h1><p data-i="heroText">Des supports imprimés soignés pour les entreprises, les cabinets et les professionnels. Vous choisissez, nous préparons votre commande.</p><div class="hero-ctas"><a class="btn btn-primary" href="#catalog" data-i="heroCta">Découvrir les produits →</a><a class="btn btn-light" href="#order" data-i="quoteCta">Demander un devis</a></div><div class="trust"><span data-i="trust1">Personnalisation sur mesure</span><span data-i="trust2">Commande simple</span><span data-i="trust3">FR / AR</span></div></div><div class="hero-art" aria-label="Maquette de papeterie PrintX"><div class="paper back"></div><div class="paper"><div class="tinybrand">Print<span>X</span></div><div style="font-size:9px;color:#7b8492;margin-top:5px;letter-spacing:1px">IMPRESSION PROFESSIONNELLE</div><div class="line" style="margin-top:22px;width:72%"></div><div class="line short"></div><div class="mockbox"></div><div class="line" style="margin-top:20px;width:42%"></div><div class="line short" style="width:62%"></div><div class="mockfooter"></div></div><div class="floating"><strong>PrintX</strong><span data-i="floatingText">Pensé pour les pros</span></div></div></div></section>
