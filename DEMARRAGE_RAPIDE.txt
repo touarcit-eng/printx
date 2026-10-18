@@ -1,0 +1,47 @@
+PRINTX — DERNIÈRE ÉTAPE POUR RECEVOIR LES COMMANDES DANS GOOGLE SHEETS
+Date : 18 octobre 2026
+
+J’ai préparé et vérifié les fichiers. Google exige néanmoins que le propriétaire autorise lui-même son compte et le déploiement. Il n’est pas nécessaire de payer un abonnement.
+
+ÉTAPE 1 — CRÉER LE PROJET
+Ouvrez : https://script.google.com/home/start
+Cliquez sur Nouveau projet et renommez-le « PrintX — Commandes ».
+
+ÉTAPE 2 — AJOUTER LE SERVEUR
+Ouvrez ce fichier dans un autre onglet :
+https://github.com/touarcit-eng/printx/blob/main/Code.gs
+Copiez tout son contenu. Revenez à Apps Script, ouvrez Code.gs, effacez le code d’exemple et collez le contenu copié.
+
+ÉTAPE 3 — AJOUTER LA BOUTIQUE
+Dans Apps Script, cliquez sur le + à côté de « Fichiers », puis « HTML ». Entrez le nom index (sans .html).
+Ouvrez ensuite :
+https://github.com/touarcit-eng/printx/blob/main/index.html
+Copiez tout le contenu et collez-le dans le nouveau fichier HTML index.
+
+ÉTAPE 4 — CRÉER LA FEUILLE PRIVÉE
+En haut de l’éditeur, choisissez la fonction setupPrintX, puis cliquez sur Exécuter.
+Google demande une autorisation : vérifiez le compte, puis acceptez. Le script crée « PrintX — Base des commandes » dans votre Drive. Gardez cette feuille privée.
+
+ÉTAPE 5 — PUBLIER L’APPLICATION
+Cliquez Déployer > Nouveau déploiement.
+Type : Application Web.
+Exécuter en tant que : Moi.
+Qui a accès : Toute personne, si cette option est disponible.
+Cliquez Déployer et acceptez toute demande d’autorisation légitime de Google.
+
+ÉTAPE 6 — RÉCUPÉRER LE LIEN PUBLIC
+Copiez l’URL du déploiement qui se termine par /exec. Ouvrez cette URL pour utiliser la boutique avec l’enregistrement centralisé. C’est cette adresse qu’il faudra partager aux clients ; l’URL GitHub Pages est seulement un aperçu statique, sans accès direct à google.script.run.
+
+ÉTAPE 7 — FAIRE UN TEST SANS PRODUCTION
+Ajoutez un seul produit, mettez dans les précisions « TEST — ne pas produire », puis saisissez un nom, un numéro et une ville.
+Cliquez « Envoyer par WhatsApp ». Vérifiez d’abord qu’une ligne est enregistrée dans la feuille Google Sheets privée, puis vérifiez le texte préparé dans WhatsApp. N’appuyez pas sur Envoyer pour un faux client ; le test peut être supprimé de la feuille après vérification.
+
+ÉTAT ACTUEL
+- Le site GitHub Pages est publié et le workflow de déploiement a réussi.
+- La boutique contient les 9 références PrintX, les options, le panier et le français/arabe.
+- Le panier reste sur le même navigateur/appareil et son compteur continue de fonctionner lors du changement de langue.
+- Le transfert WhatsApp a été testé dans un navigateur simulé ; il prépare un message vers le numéro PrintX configuré (+213 670 478 049).
+- L’enregistrement Google Sheets n’est pas encore réellement connecté : il sera confirmé seulement après les étapes 1 à 7 et vérification de la ligne test.
+- Les prix du catalogue restent indicatifs ; confirmez les vrais tarifs et disponibilités avant la vente.
+
+Si vous êtes bloqué à un écran Google, envoyez une capture d’écran de cet écran. N’envoyez jamais de mot de passe ni de code de connexion.
